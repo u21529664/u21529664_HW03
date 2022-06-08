@@ -1,0 +1,54 @@
+﻿@using u21529664_HW03.Models
+@model List<FileModel>
+
+@{
+    ViewBag.Title = "Images";
+}
+
+<h2>Images </h2>
+<p>
+    This is for DOWNLOADING and DELETING  of images from the "Media/Images/" folder
+</p>
+
+
+
+<body>
+
+    @foreach (FileModel file in Model)
+    {
+       
+        <div class="col-sm-3 col-md-4 col-lg-4" >
+            <div class="row">
+
+               
+                <a data-fancybox="gallery" style="width:50%; height:50%" href="~/Media/Images/@file.FileName" >
+                    
+                  <img style="width:300px; height:300px" src="~/Media/Images/@file.FileName" />
+                </a>
+
+                <p>@file.FileName</p>
+
+                <button class="btn btn-info" style="color:white">
+                    @Html.ActionLink("DOWNLOAD", "DownloadFile",
+              new { fileName = file.FileName })
+                </button>
+
+                <button class="btn btn-warning">
+                    @Html.ActionLink("DELETE", "DeleteFile",
+              new { fileName = file.FileName },
+               new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                </button>
+                <script>
+                    $(document).ready(function ($) {
+                        $(".gallery a").fancybox();
+                        
+                    });
+                </script>
+            </div>
+       </div>
+            
+      
+      
+        }
+
+</body>

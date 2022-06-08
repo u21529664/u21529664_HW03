@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Media Upload, Delete and Download system </h2>
+
+
+<h4>This system  enables users to upload, delete and download files,pictures and videos. </h4>
+<br />
+<br />
+<br />
+
+
+<div class="container-fluid">
+
+    <div class="row" style="background-color:lightblue">
+        <div class="col-lg-6">
+            <h4 style="color:darkblue"><b>Description</b></h4>
+            <br />
+            <p>
+                In the radio buttons displayed, a user clicks the radio button related to the media file they would like to upload and then  click the <b>"Choose File"</b> button to browse for the  file on their computer
+                then click the <b>"Submit"</b> button to upload the media file.
+
+                After uploading the media file , a user can then click on the navigation bar, a button related to the media file they have just uploaded, a list of the media files uploaded will be displayed and
+                a user can then decide to either download or delete a media file.
+                <br />
+                <b>For Instance:</b>
+                <ul>
+                    <li>
+                        If a user click the <b>Document</b> radio button and click the <b>Choose File</b> to select a document from their computer  and
+                        the <b>Submit</b> button would then be clicked to upload the document on the system . After the document has been submitted then the user can click the <b>Files</b> on the navigation bar to open the Files page.
+                        In the files page , a list of documents that have been uploaded will be displayed and a user can then decide on whether they would like to
+                        delete or download the document.
+                    </li>
+                </ul>
+            </p>
+        </div>
+        <div class="col-lg-6">
+
+            <h4 style="color:darkblue"><b>Option Selection</b></h4>
+            
+             <br />
+            <br />
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                    // an encoding type that allows files to be sent through a POST.
+                    // Quite simply, without this encoding the files cannot be sent through POST.
+                    {
+
+
+                        <div>@Html.RadioButton("File","Document") Document</div>
+                        <div> @Html.RadioButton("File","Images") Images</div>
+                        <div>@Html.RadioButton("File","Videos") Videos</div>
+                         <br />
+                         <br />
+                        <div><input type="file" name ="Upload" style="color:darkblue"  /></div>
+                        <br />
+                        <div><input type="submit"   value="Submit" /></div>
+                        
+                    }
+       </div>
+                
+    </div>
+ </div>
+
+
+
